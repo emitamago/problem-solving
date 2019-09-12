@@ -9,29 +9,30 @@ function longestSubstring(string){
     // sliding window solution
     while (right < string.length) {
         // set character in question as char pointed by right 
-        const currentChar = string.charAt(right);
+        const currentChar = string[right]
        
         // check if current char is in visited set. 
       if (!visited.has(currentChar)) {
+
         // add current char to visited 
         visited.add(currentChar);
-        // update result --- take longer count previous result or current size of set
-        
-        result = Math.max(result, visited.size);
-
+       
         // increment right pointer by one
         right++;
 
       } else {
-        
+
+         // update result --- take longer count previous result or current size of set
+        result = Math.max(result, visited.size);
+
         // if current char is in visited, delete the most left char
-        visited.delete(string.charAt(left));
+        visited.delete(string[left]);
+        
         // increment left pointer by one
         left++;
       }
 
     }
-    
     return result;
 };
 
